@@ -166,7 +166,7 @@ img {
   height: 420px;
   position: relative;
   overflow: hidden;
-  background: url('<%= require("assets/promo.jpg") %>') center;
+  background: #333 url('<%= require("assets/promo.jpg") %>') center;
   background-size: cover;
   margin-bottom: 24px;
 }
