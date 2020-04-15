@@ -19,12 +19,6 @@ function ejsRenderFile(filename, data) {
   });
 }
 
-function splitext(filename) {
-  const path = filename.split('.');
-
-  return [path.slice(0, -1).join('.'), path[path.length - 1]]
-}
-
 function _requireCopy(filename) {
   if (!filename.startsWith(src)) {
     throw Error('[RuntimeError]');
@@ -40,16 +34,14 @@ function _requireFile(filename) {
   }
   const resource = filename.substr(src.length + 1);
 
-  const [resource0, ext] = splitext(resource);
   const hash = md5File(filename).substr(0, 6);
-  const destResource = `${resource0}.${hash}.${ext}`;
 
   fs.copyFileSync(
     filename,
-    path.resolve(dist, destResource)
+    path.resolve(dist, resource)
   );
 
-  return baseUrl + destResource;
+  return baseUrl + resource + `?v=${hash}`;
 }
 
 function _requireTemplate(filename) {
@@ -58,13 +50,10 @@ function _requireTemplate(filename) {
   }
   const resource = filename.substr(src.length + 1);
 
-  const [resource0, ext] = splitext(resource);
   const hash = md5File(filename).substr(0, 6);
-  const destResource = `${resource0}.${hash}.${ext}`;
+  fs.writeFileSync(path.resolve(dist, resource), ejsRenderFile(filename));
 
-  fs.writeFileSync(path.resolve(dist, destResource), ejsRenderFile(filename));
-
-  return baseUrl + destResource;
+  return baseUrl + resource + `?v=${hash}`;
 }
 
 
@@ -78,8 +67,6 @@ function _requireStylesheet(filename) {
   const cipher = crypto.createHash('md5');
   cipher.update(source);
   const hash = cipher.digest('hex').substr(0, 6);
-  const [resource0, ext] = splitext(resource);
-  const destResource = `${resource0}.${hash}.${ext}`;
 
   postcss([
     require('autoprefixer'),
@@ -88,10 +75,10 @@ function _requireStylesheet(filename) {
     from: filename,
     map: false,
   }).then(({css: content}) => {
-    fs.writeFileSync(path.resolve(dist, destResource), content);
+    fs.writeFileSync(path.resolve(dist, resource), content);
   });
 
-  return baseUrl + destResource;
+  return baseUrl + resource + `?v=${hash}`;
 }
 
 const _required = {};
