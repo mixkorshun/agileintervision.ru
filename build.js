@@ -30,7 +30,7 @@ function _requireCopy(filename) {
     throw Error('[RuntimeError]');
   }
   const resource = filename.substr(src.length + 1);
-  fs.copyFileSync(filename, resource);
+  fs.copyFileSync(filename, path.resolve(dist, resource));
   return baseUrl + resource;
 }
 
