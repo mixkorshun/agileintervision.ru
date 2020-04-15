@@ -143,7 +143,6 @@ html = minify(html, {
   collapseWhitespace: true,
   minifyJS: true,
   collapseBooleanAttributes: true,
-  collapseInlineTagWhitespace: true,
   removeComments: true,
 });
 fs.writeFileSync(path.resolve(dist, 'index.html'), html);
