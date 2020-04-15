@@ -4,7 +4,7 @@
   "description": "",
   "private": true,
   "scripts": {
-    "build": "node buid.js"
+    "build": "node build.js"
   },
   "author": "Vladislav Bakin",
   "devDependencies": {

@@ -25,6 +25,15 @@ function splitext(filename) {
   return [path.slice(0, -1).join('.'), path[path.length - 1]]
 }
 
+function _requireCopy(filename) {
+  if (!filename.startsWith(src)) {
+    throw Error('[RuntimeError]');
+  }
+  const resource = filename.substr(src.length + 1);
+  fs.copyFileSync(filename, resource);
+  return baseUrl + resource;
+}
+
 function _requireFile(filename) {
   if (!filename.startsWith(src)) {
     throw Error('[RuntimeError]');
@@ -42,6 +51,22 @@ function _requireFile(filename) {
 
   return baseUrl + destResource;
 }
+
+function _requireTemplate(filename) {
+  if (!filename.startsWith(src)) {
+    throw Error('[RuntimeError]');
+  }
+  const resource = filename.substr(src.length + 1);
+
+  const [resource0, ext] = splitext(resource);
+  const hash = md5File(filename).substr(0, 6);
+  const destResource = `${resource0}.${hash}.${ext}`;
+
+  fs.writeFileSync(path.resolve(dist, destResource), ejsRenderFile(filename));
+
+  return baseUrl + destResource;
+}
+
 
 function _requireStylesheet(filename) {
   if (!filename.startsWith(src)) {
@@ -73,20 +98,38 @@ const _required = {};
 
 function _require(resource) {
   const filename = path.resolve(src, resource);
-  const ext = path.extname(filename);
+  const basename = path.basename(filename);
 
   if (_required[filename]) {
     return _required[filename];
   }
 
   let url;
-  // noinspection JSRedundantSwitchStatement
-  switch (ext) {
-    case '.css':
-      url = _requireStylesheet(filename);
+
+  switch (basename) {
+    case 'favicon.ico':
+      url = _requireCopy(filename);
       break;
+
+    case 'browserconfig.xml':
+    case 'site.webmanifest':
+      url = _requireTemplate(filename);
+      break;
+
     default:
-      url = _requireFile(filename);
+      const ext = path.extname(filename);
+
+      // noinspection JSRedundantSwitchStatement
+      switch (ext) {
+        case '.css':
+          url = _requireStylesheet(filename);
+          break;
+
+        default:
+          url = _requireFile(filename);
+          break;
+      }
+
       break;
   }
 
