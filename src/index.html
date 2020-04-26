@@ -1,15 +1,15 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-  <title>Гайд по Agile-интервизии</title>
+  <title>Agile-интервизия</title>
   <meta name="description"
         content="Agile-интервизия – это группа взаимопомощи для agile-коучей и scrum-мастеров, на ней участники получают ответы на свои вопросы, рекомендации или поддержку."/>
-  <link rel="canonical" href="https://agileintervision.ru/" />
+  <link rel="canonical" href="https://agileintervision.ru/"/>
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
   <meta property="og:type" content="website"/>
-  <meta name="og:title" content="Гайд по Agile-интервизии"/>
+  <meta name="og:title" content="Agile-интервизия"/>
   <meta name="og:description"
         content="Agile-интервизия – это группа взаимопомощи для agile-коучей и scrum-мастеров, на ней участники получают ответы на свои вопросы, рекомендации или поддержку."/>
   <meta name="og:image" content="https://agileintervision.ru<%= require('assets/image.jpg') %>"/>
@@ -20,7 +20,11 @@
   <script async src="https://www.googletagmanager.com/gtag/js?id=UA-163700219-1"></script>
   <script type="text/javascript">
     window.dataLayer = window.dataLayer || [];
-    function gtag() {dataLayer.push(arguments);}
+
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+
     gtag('js', new Date());
     gtag('config', 'UA-163700219-1');
   </script>
@@ -39,13 +43,14 @@
   <div class="header-overlay"></div>
   <div class="header-content">
     <div class="container">
-      <h1>Гайд по Agile-интервизии</h1>
+      <h1>Agile-интервизия</h1>
+      <div class="subheader" style="padding-left: 2px;">Гайд для фасилитатора</div>
     </div>
   </div>
 </div>
 
 <div class="container">
-  <p>Agile-интервизия – это группа взаимопомощи для Agile-коучей и scrum-мастеров.</p>
+  <p>Agile-интервизия – это группа взаимопомощи для agile-коучей и scrum-мастеров.</p>
 
   <p>На интервизии участники в небольшом кругу (до 20 человек) делятся своими запросами и получают от других
     участников то, что для них ценно: ответы на свои вопросы, поддержку, рекомендации или истории о чужом опыте.</p>
@@ -53,6 +58,19 @@
   <p>Главный фокус интервизий и их отличие от случайной группы обмена опытом – доверительная и поддерживающая
     атмосфера (которую можно создать благодаря правилам и формату встреч, а также повышенному внимания ведущего к этому
     вопросу).</p>
+
+  <blockquote class="warning gutter">
+    <h5>Дисклеймер</h5>
+    <p>
+      Мы – <a href="#about-us">Евгения Чумачкова</a> и <a href="#about-us">Александра Баптизманская</a> начали проводить
+      agile-интервизии в 2018 году. С тех пор сообщество их участников сильно выросло, а география расширилась.
+    </p>
+    <p>
+      Мы создали этот гайд и описали в нем формат проведения agile-интервизий, который мы считаем оптимальным и используем на наших
+      встречах.
+    </p>
+  </blockquote>
+
 </div>
 
 <section class="container">
@@ -82,7 +100,7 @@
     <li>Участники внимательны к запросу</li>
   </ol>
 
-  <div class="online-only">
+  <div class="highlight">
     <ol class="narrow" start="6">
       <li class="no-bullet"><b>Только для онлайн-интервизий</b></li>
       <li>Полное присутствие (закрыть все остальные окна и выключить уведомления)</li>
@@ -103,13 +121,15 @@
 
     <div class="gallery">
       <div class="gallery-image">
-        <img class="photo" src="<%= require('assets/poster1_sm.jpg') %>" data-original="<%= require('assets/poster1.png') %>"
-             alt="Правила Agile-интевизии"/>
+        <img class="photo" src="<%= require('assets/poster1_sm.jpg') %>"
+             data-original="<%= require('assets/poster1.png') %>"
+             alt="Правила agile-интевизии"/>
       </div>
 
       <div class="gallery-image">
-        <img class="photo" src="<%= require('assets/poster2_sm.jpg') %>" data-original="<%= require('assets/poster2.png') %>"
-             alt="Правила Agile-интевизии"/>
+        <img class="photo" src="<%= require('assets/poster2_sm.jpg') %>"
+             data-original="<%= require('assets/poster2.png') %>"
+             alt="Правила agile-интевизии"/>
       </div>
     </div>
 
@@ -161,7 +181,7 @@
 
   <section>
     <h3>Рассмотрение кейсов</h3>
-    <p class="subheader">2-3 кейса по 20 минут</p>
+    <p class="subheader">5-6 кейсов по 20 минут</p>
   </section>
   <blockquote>
     <b>Кейс</b> – это любое затруднение, проблема, ситуация, вопрос или другая потребность участника, для которого ему
@@ -225,7 +245,7 @@
       вопросы и мнения. Стоит отслеживать это и просить участников соблюдать правила и быть внимательными к запросу.
     </li>
   </ul>
-  <div class="online-only">
+  <div class="highlight">
     <ul>
       <li class="no-bullet"><b>Только для онлайн-интервизий</b></li>
       <li>Онлайн-интервизия должна быть короче, потому что сидеть 3 часа у монитора достаточно утомительно</li>
@@ -233,19 +253,19 @@
         Уделяйте достаточное количество времени инструкциям по работе с выбранном для онлайн-конференции софтом
         <span>(например при работе в zoom стоит рассказать участникам про включение микрофона по пробелу и функции “поднять руку”)</span>
       </li>
-      <li>Визуализация правил все также важна (например можно использовать Miro)</li>
+      <li>Визуализация правил все так же важна (например, можно использовать Miro)</li>
       <li>Включенные камеры у всех участников повышают доверие</li>
       <li>Опаздывающие более чем на 10 минут участники рушат динамику, мы советуем не добавлять их в конференцию</li>
     </ul>
   </div>
 </div>
 
-<div class="container">
+<div id="about-us" class="container">
   <h2>Кто мы</h2>
 
   <p>
-    Напишите нам если у вас есть вопросы или предложения, или если вы хотите присоединиться к сообществу людей,
-    проводящих и участвующих в Agile-интервизиях.
+    Напишите нам, если у вас есть вопросы или предложения или если вы хотите присоединиться к сообществу людей,
+    проводящих и участвующих в agile-интервизиях.
   </p>
   <div class="authors">
     <div class="author">
@@ -273,5 +293,25 @@
     async
     onload="(new Zooming({})).listen('.photo')"
 ></script>
+<script type="text/javascript">
+  function smoothScrollHandler(e) {
+    var target = document.querySelector(e.target.getAttribute('href'));
+    if (target) {
+      try {
+        target.scrollIntoView({behavior: 'smooth'});
+        e.preventDefault();
+      } catch (e) {
+      }
+    }
+  }
+
+  (function () {
+    var nodes = document.querySelectorAll('a[href^="#"]');
+    for (var i = 0; i < nodes.length; i++) {
+      var node = nodes[i];
+      node.addEventListener('click', smoothScrollHandler);
+    }
+  })();
+</script>
 </body>
 </html>
