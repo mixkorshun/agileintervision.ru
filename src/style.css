@@ -134,10 +134,8 @@ img {
 
 .authors {
   display: flex;
-
   justify-content: space-between;
 }
-
 
 .author {
   min-width: 320px;
@@ -245,8 +243,13 @@ img {
     margin: 0;
   }
 
-  section {
-    break-inside: avoid;
+  .same-page {
+    break-inside: avoid-page;
+  }
+
+  .container {
+    max-width: 100%;
+    padding: 0;
   }
 
   @page {
@@ -258,7 +261,8 @@ img {
     padding: 2px 16px 2px 34px;
     border-left-width: 6px;
     background: transparent !important;
-    break-inside: avoid;
+    break-before: avoid-page;
+    break-inside: avoid-page;
   }
 
   .highlight {
@@ -270,14 +274,13 @@ img {
   .header {
     background: none;
     height: auto;
-    padding-top: 20px;
   }
 
   .header-overlay {
     display: none;
   }
 
-  .header-content  {
+  .header-content {
     position: unset;
   }
 
@@ -285,9 +288,21 @@ img {
     color: #222;
   }
 
-  .header h1+.subheader {
+  .header h1 + .subheader {
     color: #777;
     margin-bottom: 10px;
+  }
+
+  a {
+    text-decoration: none;
+  }
+
+  .authors {
+    flex-direction: row;
+  }
+
+  .author + .author {
+    margin-top: 0;
   }
 
   .author-photo {
