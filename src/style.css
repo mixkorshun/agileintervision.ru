@@ -166,7 +166,7 @@ img {
 }
 
 .highlight {
-  padding: 4px 16px 4px 0;
+  padding: 6px 16px 6px 0;
   background: #f1fbfc;
   color: #007489;
 }
@@ -257,8 +257,41 @@ img {
   blockquote {
     padding: 2px 16px 2px 34px;
     border-left-width: 6px;
-    background: transparent;
+    background: transparent !important;
     break-inside: avoid;
+  }
+
+  .highlight {
+    background: transparent !important;
+    border-left: 6px solid #f1fbfc;
+    padding: 0 10px 0 0;
+  }
+
+  .header {
+    background: none;
+    height: auto;
+    padding-top: 20px;
+  }
+
+  .header-overlay {
+    display: none;
+  }
+
+  .header-content  {
+    position: unset;
+  }
+
+  .header h1 {
+    color: #222;
+  }
+
+  .header h1+.subheader {
+    color: #777;
+    margin-bottom: 10px;
+  }
+
+  .author-photo {
+    filter: grayscale(.1);
   }
 }
 
